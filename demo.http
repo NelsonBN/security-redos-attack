@@ -1,0 +1,45 @@
+##### Vulnerable Api #####
+@hostVulnerable = http://localhost:8080
+
+### Without issues
+post {{hostVulnerable}}/register
+Content-Type: application/json
+
+{
+    "email": "john.doe@fake.com",
+    "password": "MyPassword123#"
+}
+
+### With issues
+post {{hostVulnerable}}/register
+Content-Type: application/json
+
+{
+    "email": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0",
+    "password": "MyPassword123#"
+}
+
+
+############
+
+
+##### Secure Api #####
+@hostSecure = http://localhost:8081
+
+### Without issues
+post {{hostSecure}}/register
+Content-Type: application/json
+
+{
+    "email": "john.doe@fake.com",
+    "password": "MyPassword123#"
+}
+
+### With issues
+post {{hostSecure}}/register
+Content-Type: application/json
+
+{
+    "email": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0",
+    "password": "MyPassword123#"
+}
